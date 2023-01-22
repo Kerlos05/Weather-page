@@ -1,5 +1,5 @@
 body{
-    background-color: var(--COLOR);
+    background-color: rgb(26, 26, 28);
     display: flex;
     height: 100vh;
     display: flex;
@@ -14,97 +14,163 @@ body{
 }
 
 :root{
-    --COLORMENU:  rgba(0, 0, 0, 0.689);
-    --COLOR:rgb(26, 26, 28);
-
-}
-   
-:root{
-    --CONTAINERCOLOR : rgb(34, 60, 72); 
-    --BOX: 2px; 
-}
-
-
-.container .display, .container .inputSection{
-    display: grid;
-    
+    --SEARCH: rgba(48, 50, 52, 0.639); 
 }
 
 .container{
-    background-color: aqua;
-    padding: 15px; 
-    min-height: 75px; 
-    border-radius: 20px;
-    position: relative;
-
-}
-
-/* Input */
-
-input{
-    padding: 5px; 
-    font-size: 19px;
-    outline: none;
-    border: 2px solid black;
-    background-color: transparent;
-    margin-top: 10px; 
-    border-radius: 10px;
-}
-
-span{
-    position: absolute;
-    top: 34px; 
-    left: 19px;
-    font-size: 15px;
-    padding: 1px; 
-}
-
-input:focus +span, input:valid + span{
-    transform: translate(8px, -16px);
-    background-color: aqua;
-    font-size: 13px;
-}
-
-/* Button */
-
-.inputSection{
-    display: flex;
-    flex-direction: column;
-
-}
-
-#btn{
-    margin-top: 5px;
-    outline: none;
-    border: none;
-    background-color: rgba(0, 0, 0, 0.886);
-    color: white; 
-    position: relative;
-    bottom: 3px; 
-    overflow: hidden;
-    border-radius: 10px;
-    z-index: 10;
+    background: url(./weather-condition-images/night/Snowy.jpg) no-repeat ;
+    background-repeat: no-repeat;
+    background-size: contain;
     padding: 10px; 
+    height: 300px; 
+    width: calc(100% - 50%); 
+    position: relative; 
+    border-radius: 20px;
+    color: aliceblue;
 }
 
+.fa-search{
+    background-color: orange;
+    padding: 10px; 
+    cursor: pointer;
+    width: 36px;
+    height: 36px;
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    z-index: 1000;
 
-#btn::before{
-    content:''; 
+}
+
+.search-section{
+    display: flex;
     position: absolute;
     top: 0; 
-    left:0;
-    right:0;
-    bottom: 0;  
-    background:rgb(154, 19, 203);
-    z-index: -1;
-    transform: scale(0);  
-    transition: transform 400ms ease-in-out;
+    right: 0;
+    width: fit-content;
+    height: 100%;
+    padding: 10px; 
+    border-top-right-radius: 20px;
+    border-bottom-right-radius: 20px;
 }
 
-#btn:hover::before{
-    transform: scale(1.30);
+button{
+    display: none;
 }
 
-.display{
-    margin-top: 10px; 
+input{
+    width:180px;
+    padding: 5px; 
+    border: none;
+    outline: none;
+    display: none;
+    margin-right: 45px;
+    border-bottom: 2px solid black;
+    background-color: transparent;
+    color: aliceblue;
+}
+
+input::placeholder{
+    color: black;
+}
+
+body.open input{
+    display: block;
+
+}
+
+body.open .search-section{
+    background-color: var(--SEARCH);
+    z-index: 10;
+}
+
+.dis{
+    display: grid;
+    grid-template: repeat(1, 50px) / repeat(1, minmax(100px, 100%));
+    gap: -10px;
+    padding: 10px;
+    word-wrap: break-word; 
+}
+
+.dis p:first-child{
+    position: absolute;
+    bottom: 0;
+    transform: translate(15px);
+
+}
+
+.dis p:last-child{
+    font-size: 28px;
+    position: absolute;
+    bottom: 20px;
+}
+
+
+
+.dis img{
+    transform: scale(120%);
+    position: absolute;
+    bottom: 0; 
+    right: 0; 
+}
+
+
+
+@media  screen and (max-width: 767px){
+    body{
+        font-size: 15px;
+    }
+
+    body .container{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-content: center;
+        width: 80%;
+        position: relative;
+
+    }
+
+    body .fa-search{
+        position: fixed;
+        top: 0; 
+        right: 0;
+        left: 0;
+        width: 100%;        
+        display: grid;
+        place-items: center center;
+        background-color: transparent;
+        background-color: rgba(48, 50, 52, 0.639);
+    }
+
+    .search-section{
+        width: 100%;
+        border-radius: 0;
+        height: fit-content;
+        position: absolute;
+        top: -100px; 
+    }
+    img{
+        margin-bottom: 5px;
+    }
+
+}
+
+@media  screen and (max-width: 280px){
+    .dis img{
+        position: absolute; 
+        margin: auto;
+        left: 0;
+        right: 0; 
+        top: 100px; 
+    }
+}
+
+
+
+
+@media  screen and (min-width: 768px){
+    .container{
+        width: 65%;
+    }
 }
