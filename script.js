@@ -9,7 +9,7 @@ e.preventDefault()
 if(!input.value){
     return 
 }
-fetch('https://api.weatherapi.com/v1/current.json?key=3ad63c8348b74864a20174216232001&q=' + input.value+'&aqi=no')
+fetch('https://api.weatherapi.com/v1/current.json?key=b83d999ff3eb430ca00160502230302&q=' + input.value+'&aqi=no')
 .then((res) => res.json())    
 .then((data) => {
     const wrapper = document.createElement('div');
@@ -161,7 +161,7 @@ document.body.classList.toggle('open');
 
 window.onload = () =>{
         navigator.geolocation.getCurrentPosition(function(position){
-        fetch('https://api.weatherapi.com/v1/current.json?key=3ad63c8348b74864a20174216232001&q=' +`${position.coords.latitude} + ${position.coords.longitude}`)
+        fetch('https://api.weatherapi.com/v1/current.json?key=b83d999ff3eb430ca00160502230302&q=' +`${position.coords.latitude} + ${position.coords.longitude}`)
         .then((res) => res.json())    
         .then((data) => {
             const wrapper = document.createElement('div');
