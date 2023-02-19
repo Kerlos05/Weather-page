@@ -1,176 +1,206 @@
-body{
-    background-color: rgb(26, 26, 28);
-    display: flex;
-    height: 100vh;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
 *{
     margin: 0; 
     padding:0; 
     box-sizing: border-box;
 }
 
-:root{
-    --SEARCH: rgba(48, 50, 52, 0.639); 
+body{
+    background-color: rgb(26, 26, 28);
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
-.container{
-    background: url(./weather-condition-images/night/Snowy.jpg) no-repeat ;
-    background-repeat: no-repeat;
-    background-size: contain;
+.container-style{
+    background: url(./weather-condition-images/welcome.jpg) no-repeat;
+    background-size: cover ;
     padding: 10px; 
-    height: 300px; 
-    width: calc(100% - 50%); 
-    position: relative; 
-    border-radius: 20px;
-    color: aliceblue;
-}
-
-.fa-search{
-    background-color: orange;
-    padding: 10px; 
-    cursor: pointer;
-    width: 36px;
-    height: 36px;
-    position: absolute;
-    top: 10px;
-    right: 10px;
-    z-index: 1000;
+    height: 340px;
+    width: 60%;
+    position: relative;
 
 }
+
 
 .search-section{
     display: flex;
+    align-items: center;
+    justify-content: center;
     position: absolute;
-    top: 0; 
-    right: 0;
-    width: fit-content;
-    height: 100%;
-    padding: 10px; 
-    border-top-right-radius: 20px;
-    border-bottom-right-radius: 20px;
+    top: 5px; 
+    left: 50px;  
+    background-color: rgb(26, 26, 28, .72);
 }
 
-button{
-    display: none;
+.fa-search{
+    position: absolute;
+    top: 20px; 
+    left: 20px; 
+    cursor: pointer;    
+    z-index: 10000;
+
+}
+
+
+body.open .search-section input{
+    display: inline;
+    margin-left: 10px;
 }
 
 input{
-    width:180px;
-    padding: 5px; 
     border: none;
     outline: none;
-    display: none;
-    margin-right: 45px;
-    border-bottom: 2px solid black;
     background-color: transparent;
+    display: none;
+    padding: 10px;
     color: aliceblue;
-}
 
-input::placeholder{
-    color: black;
-}
-
-body.open input{
-    display: block;
-
-}
-
-body.open .search-section{
-    background-color: var(--SEARCH);
-    z-index: 10;
 }
 
 .dis{
-    display: grid;
-    grid-template: repeat(1, 50px) / repeat(1, minmax(100px, 100%));
-    gap: -10px;
-    padding: 10px;
-    word-wrap: break-word; 
+    position: absolute;
+    bottom: 0px; 
+    left: 20px; 
 }
 
 .dis p:first-child{
-    position: absolute;
-    bottom: 0;
-    transform: translate(15px);
-
-}
-
-.dis p:last-child{
     font-size: 28px;
-    position: absolute;
-    bottom: 20px;
+    transform: translateY(20px);
 }
 
-
-
-.dis img{
-    transform: scale(120%);
-    position: absolute;
-    bottom: 0; 
-    right: 0; 
+p{
+    user-select: none
 }
 
-
-
-@media  screen and (max-width: 767px){
-    body{
-        font-size: 15px;
+/* Tablets */
+@media screen and (min-width: 767px) and (max-width: 991px) {
+    body .forecast{
+        bottom: auto; 
+    }
+   body #forcastDisplayer{
+        justify-content: unset;
+        margin-left: 20px;
+        padding: 10px; 
+        width: 100%; 
+    }
+    .fa-search{
+        left: 20px; 
     }
 
-    body .container{
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-content: center;
-        width: 80%;
-        position: relative;
-
+    .dis{
+        bottom: 15px; 
+        left: 20px; 
     }
 
-    body .fa-search{
-        position: fixed;
-        top: 0; 
-        right: 0;
-        left: 0;
-        width: 100%;        
-        display: grid;
-        place-items: center center;
-        background-color: transparent;
-        background-color: rgba(48, 50, 52, 0.639);
+    .dis p:first-child{
+        font-size: 21px;
     }
 
+    .dis p:last-child{
+        font-size: 16px;
+    }
+
+
+    .container-style{
+        bottom: 300px; 
+    }
     .search-section{
+        left: 50px; 
+    }
+}
+
+
+/* Desktop */
+@media screen and (min-width:1280px) and (max-width: 1290px) {
+    .fa-search{
+        left: 20px; 
+    }
+    .search-section{
+        left: 50px; 
+    }
+    .dis{
+        left: 20px; 
+    }
+}
+
+
+@media screen and (min-width:992px) and (max-width: 1024px) {
+    .fa-search{
+        left: 20px; 
+    }
+    .dis{
+        bottom: 10px; 
+        left: 10px; 
+    }
+    .search-section{
+        left: 50px; 
+    }
+}
+
+
+.forecast{
+    position: absolute;
+    bottom: -200px; 
+    color: aliceblue;
+}
+
+#forcastDisplayer{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 15px; 
+    overflow-x: auto;
+
+}
+
+.forecast-item{
+    display: grid;
+    place-items: center center;
+}
+
+
+/* Phones */
+@media screen and (max-width: 767px){
+    #forcastDisplayer{
+        align-items: unset;
+        justify-content: unset;
+    }
+
+    .forecast{
+        bottom: 0px; 
+    }
+
+    .fa-search{
+        left: 20px; 
+    }
+    .search-section{
+        left: 50px; 
+    }
+
+    .dis p:first-child{
+        font-size: 21px;
+    }
+
+    .dis p:last-child{
+        font-size: 16px;
+    }
+
+  
+    .container-style{
         width: 100%;
-        border-radius: 0;
-        height: fit-content;
         position: absolute;
-        top: -100px; 
-    }
-    img{
-        margin-bottom: 5px;
-    }
-
-}
-
-@media  screen and (max-width: 280px){
-    .dis img{
-        position: absolute; 
-        margin: auto;
-        left: 0;
+        top: 0; 
+        left: 0; 
         right: 0; 
-        top: 100px; 
+        background-position: unset;
     }
+    .dis{
+        left: 10px; 
+        bottom: 15px;  
+    } 
+
 }
 
 
 
-
-@media  screen and (min-width: 768px){
-    .container{
-        width: 65%;
-    }
-}
